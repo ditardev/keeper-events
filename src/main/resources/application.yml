@@ -1,0 +1,70 @@
+#Spring Panda Properties
+spring:
+  profiles:
+    active: dev
+  #    active: prod
+
+  application:
+    name: ${server.appName}
+
+  datasource:
+    url: jdbc:postgresql://${server.ip}:${server.db.port}/${server.db.name}?currentSchema=${server.db.schema}
+    username: ${server.db.user}
+    password: ${server.db.password}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  properties:
+    hibernate:
+      default_schema: ${server.db.schema}
+  flyway:
+    url: jdbc:postgresql://${server.ip}:${server.db.port}/${server.db.name}
+    user: ${server.db.user}
+    password: ${server.db.password}
+    default-schema: ${server.db.schema}
+  instance:
+    status-page-url-path: api/${server.name}/actuator/info
+    health-check-url-path: api/${server.name}/actuator/health
+  main:
+    allow-bean-definition-overriding: true
+
+#Eureka
+eureka:
+  client:
+    service-url:
+      default-zone: http://${server.ip}:8761/eureka
+  instance:
+    statusPageUrlPath: ${server.name}/info
+    healthCheckUrlPath: ${server.name}/health
+    instance-id: "${spring.application.name}:${spring.profiles.active}:${random.uuid}"
+    #http://localhost:8080/gateway/info/health
+
+#Logging
+logging:
+  level:
+    root: ${server.logging.level}
+  file:
+    name: ${server.logging.filePath}
+
+#Open-api
+springdoc:
+  api-docs:
+    path: /security-docs
+
+#Prometheus
+management:
+  endpoint:
+    info:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: info, health, metrics, prometheus, loggers
+      base-path: /api/${server.name}/info
+  metrics:
+    enable:
+      jvm: true
+
+
+

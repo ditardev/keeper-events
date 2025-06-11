@@ -24,6 +24,20 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+	//Eureka
+//	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:4.2.1")
+
+	//Postgres
+	implementation("org.postgresql:postgresql:42.7.5")
+	runtimeOnly("org.flywaydb:flyway-database-postgresql:11.7.0")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.4.4")
+
+	//Addiction
+	implementation("io.micrometer:micrometer-registry-prometheus:1.14.5")
+	implementation("org.springframework.boot:spring-boot-starter-actuator:3.4.4")
+	implementation("org.springframework.boot:spring-boot-devtools:3.4.4")
+	implementation("org.springframework.boot:spring-boot-configuration-processor:3.4.4")
 }
 
 kotlin {
