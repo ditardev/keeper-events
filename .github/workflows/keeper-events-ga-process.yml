@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  Keeper-eureka:
+  Keeper-events:
     runs-on: self-hosted
     
     steps:
