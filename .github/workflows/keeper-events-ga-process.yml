@@ -1,0 +1,16 @@
+name: events-action-process
+env:
+  APPLICATION_NAME : "Keeper-Events"
+on: 
+  push:
+    branches: 
+      - main
+
+jobs:
+  Keeper-eureka:
+    runs-on: self-hosted
+    
+    steps:
+      - name: PrintAppData
+        run : |
+          echo "Application name2: ${{ env.APPLICATION_NAME}}"
