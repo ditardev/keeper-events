@@ -28,7 +28,11 @@ spring:
     health-check-url-path: api/${server.name}/actuator/health
   main:
     allow-bean-definition-overriding: true
-
+server:
+  shutdown: graceful
+  servlet:
+    session:
+      timeout: 30s
 #Eureka
 eureka:
   client:

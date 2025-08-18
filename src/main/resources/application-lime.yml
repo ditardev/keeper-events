@@ -1,0 +1,17 @@
+server:
+  appName: keeper-events-service
+  name: events
+  port: 0
+  ip: 192.168.100.8
+  endpoint:
+    main: api/events
+  db:
+    port: 5432
+    name: postgres
+    schema: events
+    user: postgres
+    password: postgrespw
+  logging:
+    level: info
+    filePath: ../logs/events/panda.log
+
