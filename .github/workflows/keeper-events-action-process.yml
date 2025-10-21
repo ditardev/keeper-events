@@ -1,8 +1,8 @@
 name: events-action-process
 env:
   APPLICATION_NAME : "keeper_events"
-  DIR_NAME: "_docker/core"
-  COMPOSE_NAME: "keeper-core-compose.yml"
+  DIR_NAME: "_docker/micro"
+  COMPOSE_NAME: "keeper-micro-compose.yml"
 on: 
   push:
     branches: 
