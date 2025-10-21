@@ -4,7 +4,7 @@ server:
   port: 0
   ip: 192.168.100.8
   endpoint:
-    main: api/events
+    main: api/event
   db:
     port: 5432
     name: postgres

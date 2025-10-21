@@ -1,12 +1,12 @@
 plugins {
 	kotlin("jvm") version "1.9.25"
 	kotlin("plugin.spring") version "1.9.25"
-	id("org.springframework.boot") version "3.5.0"
+	id("org.springframework.boot") version "3.4.4"
 	id("io.spring.dependency-management") version "1.1.7"
 }
 
 group = "com.micro"
-version = "0.0.1-SNAPSHOT"
+version = "0.0.1"
 
 java {
 	toolchain {
@@ -28,7 +28,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web:3.4.4")
 
 	//Eureka
-//	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:4.2.1")
+	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:4.2.1")
 
 	//Postgres
 	implementation("org.postgresql:postgresql:42.7.5")

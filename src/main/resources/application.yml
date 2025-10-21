@@ -1,7 +1,8 @@
 #Spring Panda Properties
 spring:
   profiles:
-    active: dev
+#    active: dev
+    active: lime
   #    active: prod
 
   application:
