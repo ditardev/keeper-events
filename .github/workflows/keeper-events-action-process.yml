@@ -1,6 +1,6 @@
 name: events-action-process
 env:
-  APPLICATION_NAME : "keeper_events"
+  APP_NAME : "keeper_events"
   DIR_NAME: "_docker/micro"
   COMPOSE_NAME: "keeper-micro-compose.yml"
 on: 
