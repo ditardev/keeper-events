@@ -1,0 +1,17 @@
+server:
+  appName: keeper-events-service
+  name: events
+  port: 0
+  ip: 192.168.192.194
+  endpoint:
+    main: api/event
+  db:
+    port: 11984
+    name: keeper-postgres-db
+    schema: events
+    user: ditar
+    password: keeperAdmin1984
+  logging:
+    level: info
+    filePath: ../logs/events/events.log
+
