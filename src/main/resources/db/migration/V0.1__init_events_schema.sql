@@ -16,12 +16,12 @@ CREATE TABLE IF NOT EXISTS events
 (
     id          SERIAL PRIMARY KEY,
     user_id     INTEGER      not null,
-    full_name   VARCHAR(100) not null,
+    name   VARCHAR(100) not null,
     notify      boolean      NOT NULL DEFAULT FALSE,
     date        date         not null,
     type        VARCHAR(20)  NOT NULL DEFAULT 'ONCE',
     description text,
-    UNIQUE (full_name, date)
+    UNIQUE (name, date)
 );
 
 ALTER TABLE events

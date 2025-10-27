@@ -20,7 +20,7 @@ class EventConverter(
     fun convertToEntity(userEntity: UserEntity, dto: EventDto): EventEntity {
         return EventEntity(
             id = dto.id,
-            fullName = dto.fullName,
+            name = dto.name,
             date = dto.date,
             notify = dto.notify,
             type = dto.type,
@@ -37,7 +37,7 @@ class EventConverter(
     fun convertToDto(entity: EventEntity): EventDto {
         return EventDto(
             id = entity.id,
-            fullName = entity.fullName,
+            name = entity.name,
             date = entity.date,
             notify = entity.notify,
             type = entity.type,

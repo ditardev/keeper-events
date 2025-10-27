@@ -11,7 +11,7 @@ data class EventEntity(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
 
-    var fullName: String? = null,
+    var name: String? = null,
     var date: Date? = null,
     var notify: Boolean? = true,
 
