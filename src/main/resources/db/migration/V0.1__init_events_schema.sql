@@ -1,6 +1,6 @@
-create schema if not exists event;
+create schema if not exists events;
 
-SET search_path TO event;
+SET search_path TO events;
 
 DROP TABLE IF EXISTS birthdays;
 DROP TABLE IF EXISTS events;

@@ -4,7 +4,7 @@ server:
   port: 0
   ip: 192.168.192.194
   endpoint:
-    main: api/event
+    main: api/events
   db:
     port: 11984
     name: keeper-postgres-db

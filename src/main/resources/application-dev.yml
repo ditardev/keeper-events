@@ -1,7 +1,7 @@
 server:
   appName: keeper-events-service
   name: events
-  port: 8092
+  port: 0
   ip: localhost
   endpoint:
     main: api/events

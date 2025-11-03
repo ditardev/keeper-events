@@ -1,5 +1,5 @@
 SET
-search_path TO event;
+search_path TO events;
 
 insert into users(uuid)
 values ('8a8ac7b4-6e1f-4677-ba83-e4acb8559a7b'),

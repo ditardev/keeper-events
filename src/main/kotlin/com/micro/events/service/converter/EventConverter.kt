@@ -25,6 +25,7 @@ class EventConverter(
             notify = dto.notify,
             type = dto.type,
             description = dto.description,
+            userEntity = userEntity
         )
     }
 
