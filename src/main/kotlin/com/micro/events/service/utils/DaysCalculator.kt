@@ -1,18 +1,27 @@
 package com.micro.events.service.utils
 
+import org.joda.time.Days
+import org.joda.time.LocalDate
 import org.springframework.stereotype.Component
 import java.sql.Date
-import java.time.LocalDate
-import java.time.temporal.ChronoUnit
 
 @Component
 class DaysCalculator(
 ) {
     fun countBetweenToday(date: Date?): String{
+        if (date == null) return ""
         val today = LocalDate.now()
-        val date2 = date?.toLocalDate()
+        val dayAndMonth = LocalDate(date)
+        var nextOccurrence = dayAndMonth.withYear(today.year)
+        if (nextOccurrence.isBefore(today)) {
+            nextOccurrence = nextOccurrence.plusYears(1)
+        }
+        val days = Days.daysBetween(today, nextOccurrence).days
 
-        val daysBetween = today.until(date2, ChronoUnit.DAYS)
-        return daysBetween.toString()
+        return when(days){
+            0 -> "Today"
+            1 -> "Tomorrow"
+            else -> days.toString()
+        }
     }
 }

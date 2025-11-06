@@ -10,4 +10,7 @@ interface EventRepository : JpaRepository<EventEntity, Long> {
     fun deleteAllByUserEntity(userEntity: UserEntity)
 
     fun existsByUserEntityAndId(userEntity: UserEntity, id: Long): Boolean
+
+    fun removeAllByUserEntity(userEntity: UserEntity)
+    fun removeByUserEntity(userEntity: UserEntity)
 }

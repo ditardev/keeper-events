@@ -4,6 +4,7 @@ import com.micro.events.appconfig.model.ApiRequest
 import com.micro.events.appconfig.model.ApiResponse
 import com.micro.events.appconfig.model.RequestInfoDto
 import com.micro.events.model.dto.EventDto
+import com.micro.events.model.dto.UploadFileDto
 import com.micro.events.service.EventService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
@@ -39,5 +40,12 @@ class EventsController(
     fun delete(@RequestBody request: ApiRequest<List<Long>>): ResponseEntity<*>? {
         val data = eventService.delete(request.userUUID, request.data)
         return ResponseEntity.ok(ApiResponse.Success(true, data))
+    }
+
+    @PostMapping("/import")
+    fun import(@RequestBody request: ApiRequest<UploadFileDto>): ResponseEntity<*>? {
+        return ResponseEntity.ok(
+            ApiResponse.Success(true,eventService.upload(request.userUUID, request.data))
+        )
     }
 }

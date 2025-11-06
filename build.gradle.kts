@@ -40,6 +40,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator:3.4.4")
 	implementation("org.springframework.boot:spring-boot-devtools:3.4.4")
 	implementation("org.springframework.boot:spring-boot-configuration-processor:3.4.4")
+	implementation("joda-time:joda-time:2.14.0")
 }
 
 kotlin {
