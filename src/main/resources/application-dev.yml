@@ -1,6 +1,6 @@
 server:
   appName: keeper-events-service
-  name: events
+  name: keeper_events
   port: 0
   ip: localhost
   eureka:
