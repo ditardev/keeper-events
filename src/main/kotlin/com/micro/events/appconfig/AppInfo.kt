@@ -21,6 +21,9 @@ class AppInfo {
     @Value("\${server.ip}")
     private val serverIp: String? = null
 
+    @Value("\${server.version}")
+    private val version: String? = null
+
     private val startDelimiter = "=============^_^============="
     private val stopDelimiter = "============================="
 
@@ -34,6 +37,7 @@ class AppInfo {
                 "Configuration: " + activeProfile + ln +
                 "Server port: " + serverPort + ln +
                 "Server ip: " + serverIp + ln +
+                "Server version: " + version + ln +
                 "Start date time: " + Date() + ln +
                 stopDelimiter
         println(builder)
@@ -44,6 +48,7 @@ class AppInfo {
         val builder = StringBuilder()
         builder.append(startDelimiter).append(ln)
         builder.append("Start date time: ").append(Date(contextClosedEvent.timestamp)).append(ln)
+        builder.append("Configuration: ").append(activeProfile).append(ln)
         builder.append(calculateUpTime(contextClosedEvent.timestamp)).append(ln)
         builder.append(stopDelimiter)
         println(builder.toString())

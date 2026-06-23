@@ -3,12 +3,14 @@ server:
   name: events
   port: 0
   ip: localhost
+  eureka:
+    enabled: true
   endpoint:
-    main: api/events
+    main: api/v1/events
   db:
     port: 5432
     name: postgres
-    schema: events
+    schema: keeper_events
     user: postgres
     password: postgrespw
   logging:

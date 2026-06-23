@@ -1,6 +1,6 @@
 #!/bin/bash
-readonly container_name=keeper_events_c
-readonly image_name=keeper_events_img
+readonly container_name=keeper-events-c
+readonly image_name=keeper-events-img
 
 echo $container_name
 echo $image_name

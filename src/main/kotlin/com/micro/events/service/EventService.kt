@@ -37,7 +37,7 @@ class EventService(
     fun update(userUUID: String, eventDto: EventDto): EventDto {
         val userEntity = userService.findOrCreate(userUUID)
         if (eventRepository.existsByUserEntityAndId(userEntity, eventDto.id!!).not()) {
-            throw ResourceNotFoundException("Event with name ${eventDto.name} not found")
+            throw ResourceNotFoundException("Event with name ${eventDto.name} and id ${eventDto.id} not found")
         }
         val eventEntity = eventRepository.save(converter.convertToEntity(userEntity, eventDto))
         return converter.convertToDto(eventEntity)

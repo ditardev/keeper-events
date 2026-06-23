@@ -2,9 +2,11 @@ server:
   appName: keeper-events-service
   name: events
   port: 0
-  ip: 192.168.192.194
+  ip: 0.0.0.0
   endpoint:
     main: api/events
+  eureka:
+    enabled: true
   db:
     port: 11984
     name: keeper-postgres-db
