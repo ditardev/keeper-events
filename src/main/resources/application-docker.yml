@@ -1,14 +1,14 @@
 server:
   appName: keeper-events-service
-  name: events
+  name: keeper_events
   port: 0
   ip: host.docker.internal
   eureka:
     enabled: true
     hostname: host.docker.internal
-    prefer-ip: false
+    prefer-ip: true
   endpoint:
-    main: api/events
+    main: api/v1/events
   db:
     port: 5432
     name: postgres
