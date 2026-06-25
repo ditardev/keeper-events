@@ -1,6 +1,7 @@
 package com.micro.events.service.impl
 
 import com.micro.events.appconfig.exceptions.ResourceNotFoundException
+import com.micro.events.appconfig.utility.Messages
 import com.micro.events.model.ImportType
 import com.micro.events.model.dto.EventDto
 import com.micro.events.model.entity.EventEntity
@@ -38,7 +39,7 @@ class EventServiceImpl(
     override fun update(userUUID: String, eventDto: EventDto): EventDto {
         val userEntity = userService.findOrCreate(userUUID)
         if (eventRepository.existsByUserEntityAndId(userEntity, eventDto.id!!).not()) {
-            throw ResourceNotFoundException("Event with name ${eventDto.name} and id ${eventDto.id} not found")
+            throw ResourceNotFoundException(" ${Messages.EVENT_NOT_FOUND_NAME + eventDto.name}")
         }
         val eventEntity = eventRepository.save(eventDto.toEntity(userEntity))
         return eventEntity.toDto()
@@ -50,7 +51,7 @@ class EventServiceImpl(
         val existedIdList = mutableListOf<Long>()
         for (id in idList) {
             if (!eventRepository.existsByUserEntityAndId(userEntity, id)) {
-                throw ResourceNotFoundException("Event with id $id not found")
+                throw ResourceNotFoundException("${Messages.EVENT_NOT_FOUND_ID}$id")
             }
             existedIdList.add(id)
         }
