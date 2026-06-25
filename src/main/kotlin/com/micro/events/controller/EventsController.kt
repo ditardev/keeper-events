@@ -7,11 +7,7 @@ import com.micro.events.model.dto.EventDto
 import com.micro.events.model.dto.UploadFileDto
 import com.micro.events.service.EventService
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.PutMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("\${server.endpoint.main}")
@@ -45,7 +41,11 @@ class EventsController(
     @PostMapping("/import")
     fun import(@RequestBody request: ApiRequest<UploadFileDto>): ResponseEntity<*>? {
         return ResponseEntity.ok(
-            ApiResponse.Success(true,eventService.upload(request.userUUID, request.data))
+            ApiResponse.Success(true, eventService.upload(
+                request.userUUID,
+                request.data.type,
+                request.data.dtoList)
+            )
         )
     }
 }

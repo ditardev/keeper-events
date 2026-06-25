@@ -1,6 +1,9 @@
 package com.micro.events.appconfig.exceptions
 
 import com.micro.events.appconfig.model.ApiResponse
+import com.micro.events.appconfig.utility.Messages
+import org.springframework.dao.DataIntegrityViolationException
+import org.springframework.http.HttpStatus
 
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler
@@ -23,6 +26,14 @@ class GlobalExceptionHandler : ResponseEntityExceptionHandler() {
             ApiResponse.Error(status = false, message = e.message),
             e.httpStatus
         )
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException::class)
+    fun handleDataIntegrityViolation(e: DataIntegrityViolationException): ResponseEntity<String> {
+        val errorMessage = "${Messages.ALREADY_EXIST}${e.mostSpecificCause.message}"
+        return ResponseEntity
+            .status(HttpStatus.CONFLICT)
+            .body(errorMessage)
     }
 
 }

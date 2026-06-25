@@ -5,10 +5,8 @@ import org.joda.time.LocalDate
 import org.springframework.stereotype.Component
 import java.sql.Date
 
-@Component
-class DaysCalculator(
-) {
-    fun countBetweenToday(date: Date?): String{
+object DaysCalculator { // Меняем class на object, убираем @Component
+    fun countBetweenToday(date: Date?): String {
         if (date == null) return ""
         val today = LocalDate.now()
         val dayAndMonth = LocalDate(date)
@@ -18,7 +16,7 @@ class DaysCalculator(
         }
         val days = Days.daysBetween(today, nextOccurrence).days
 
-        return when(days){
+        return when(days) {
             0 -> "Today"
             1 -> "Tomorrow"
             else -> days.toString()

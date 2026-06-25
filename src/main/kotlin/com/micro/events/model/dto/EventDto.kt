@@ -1,6 +1,6 @@
 package com.micro.events.model.dto
 
-import com.micro.events.model.Type
+import com.micro.events.model.RemindType
 import java.sql.Date
 
 data class EventDto(
@@ -8,7 +8,7 @@ data class EventDto(
     val name: String? = null,
     val date: Date? = null,
     val notify: Boolean? = null,
-    val type: Type? = null,
+    val remindType: RemindType? = null,
     val description: String? = null,
     val daysLeft: String? = null,
 )

@@ -1,12 +1,10 @@
 package com.micro.events.model.dto
 
+import com.micro.events.model.ImportType
+
 data class UploadFileDto(
     val type: ImportType = ImportType.IMPORT,
-    val json: List<EventDto>,
+    val dtoList: List<EventDto>,
 )
 
-enum class ImportType() {
-    IMPORT,
-    REPLACE;
-}
 

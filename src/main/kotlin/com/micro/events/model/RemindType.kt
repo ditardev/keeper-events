@@ -1,5 +1,5 @@
 package com.micro.events.model
 
-enum class Type {
+enum class RemindType {
     ONCE, DAILY, MONTHLY, YEARLY, BIRTHDAY
 }

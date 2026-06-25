@@ -1,6 +1,6 @@
 package com.micro.events.model.entity
 
-import com.micro.events.model.Type
+import com.micro.events.model.RemindType
 import jakarta.persistence.*
 import java.sql.Date
 
@@ -16,7 +16,8 @@ data class EventEntity(
     var notify: Boolean? = true,
 
     @Enumerated(EnumType.STRING)
-    val type: Type? = null,
+    @Column(name = "type")
+    val remindType: RemindType? = null,
 
     var description: String? = null,
 
