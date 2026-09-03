@@ -1,4 +1,4 @@
-package com.micro.events.service.extention
+package com.micro.events.service.extension
 
 import com.micro.events.model.dto.EventDto
 import com.micro.events.model.entity.EventEntity

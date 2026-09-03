@@ -1,5 +1,5 @@
 server:
-  appName: keeper-events-service
+  appName: keeper-events
   name: events
   port: 0
   ip: 0.0.0.0

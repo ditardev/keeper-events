@@ -9,10 +9,10 @@ import com.micro.events.model.entity.UserEntity
 import com.micro.events.repository.EventRepository
 import com.micro.events.service.EventService
 import com.micro.events.service.UserService
-import com.micro.events.service.extention.toDto
-import com.micro.events.service.extention.toDtoList
-import com.micro.events.service.extention.toEntity
-import com.micro.events.service.extention.toEntityList
+import com.micro.events.service.extension.toDto
+import com.micro.events.service.extension.toDtoList
+import com.micro.events.service.extension.toEntity
+import com.micro.events.service.extension.toEntityList
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

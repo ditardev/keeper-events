@@ -1,32 +1,36 @@
-name: events-action-process
+name: keeper-events
 env:
-  APP_NAME : "keeper_events"
-  DIR_NAME: "_docker/micro"
-  COMPOSE_NAME: "keeper-micro-compose.yml"
-on: 
+  SERVICE: keeper-events
+  LAYER: micro
+  COMPOSE_FILE: keeper-micro-compose.yml
+  KEEPER_ROOT: /home/ditar/DataDrive/actions-runner/keeper-actions/repositories
+  LAYER_DIR: /home/ditar/DataDrive/actions-runner/keeper-actions/repositories/micro
+  DEST: /home/ditar/DataDrive/actions-runner/keeper-actions/repositories/micro/keeper-events
+on:
   push:
-    branches: 
+    branches:
       - prod
 
 jobs:
-  Keeper-events:
+  deploy:
     runs-on: self-hosted
-    
     steps:
-      - name: PrintAppData
-        run : |
-          echo "Application name2: ${{ env.APP_NAME}}"
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          clean: 'false'
-      - name: Gradle ${{env.APP_NAME}} clean-build
-        run : |
-          gradle clean build -x test
-      - name: Docker ${{env.APP_NAME}} Update
-        run : |
-          bash ${{env.APP_NAME}}_update.sh
-      - name: Docker Compose up
-        run : |
-          cd /home/ditar/DataDrive/actions-runner/keeper-actions/${{env.DIR_NAME}}
-          docker compose -f ${{env.COMPOSE_NAME}} up -d
+          clean: false
+
+      - name: Gradle build
+        run: gradle clean build -x test
+
+      - name: Publish into repositories
+        run: |
+          mkdir -p "${{ env.DEST }}"
+          rsync -a --exclude '.git' ./ "${{ env.DEST }}/"
+
+      - name: Compose up ${{ env.SERVICE }}
+        run: |
+          docker compose --project-directory "${{ env.LAYER_DIR }}" \
+            --env-file "${{ env.KEEPER_ROOT }}/.env" \
+            -f "${{ env.LAYER_DIR }}/${{ env.COMPOSE_FILE }}" \
+            up -d --build --no-deps --force-recreate "${{ env.SERVICE }}"
