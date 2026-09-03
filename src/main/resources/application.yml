@@ -1,14 +1,13 @@
 #Spring Properties
 spring:
   profiles:
-    active: dev
-  #      active: prod
+    active: ${SPRING_PROFILES_ACTIVE:dev}
 
   application:
     name: ${server.appName}
 
   datasource:
-    url: jdbc:postgresql://${server.ip}:${server.db.port}/${server.db.name}?currentSchema=${server.db.schema}
+    url: jdbc:postgresql://${server.db.host:${server.ip}}:${server.db.port}/${server.db.name}?currentSchema=${server.db.schema}
     username: ${server.db.user}
     password: ${server.db.password}
     driver-class-name: org.postgresql.Driver
@@ -19,7 +18,7 @@ spring:
     hibernate:
       default_schema: ${server.db.schema}
   flyway:
-    url: jdbc:postgresql://${server.ip}:${server.db.port}/${server.db.name}
+    url: jdbc:postgresql://${server.db.host:${server.ip}}:${server.db.port}/${server.db.name}
     user: ${server.db.user}
     password: ${server.db.password}
     default-schema: ${server.db.schema}
